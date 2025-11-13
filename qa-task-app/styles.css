@@ -1,0 +1,239 @@
+:root {
+  --bg: #0f172a;
+  --card-bg: #020617;
+  --accent: #22c55e;
+  --accent-soft: rgba(34, 197, 94, 0.15);
+  --text: #e5e7eb;
+  --text-muted: #9ca3af;
+  --border: #1f2937;
+  --danger: #f97373;
+  --radius-lg: 18px;
+  --shadow-soft: 0 18px 35px rgba(0, 0, 0, 0.45);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: radial-gradient(circle at top, #1e293b, #020617 55%);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.app {
+  padding: 24px 16px 32px;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.app-header h1 {
+  margin: 8px 0;
+  font-size: 1.9rem;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.card {
+  background: rgba(15, 23, 42, 0.98);
+  border-radius: var(--radius-lg);
+  padding: 16px 14px 18px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.task-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.task-form input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #020617;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.task-form input::placeholder {
+  color: var(--text-muted);
+}
+
+.task-form input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-soft);
+}
+
+.task-form button {
+  border: none;
+  border-radius: 999px;
+  padding: 0 16px;
+  font-size: 0.95rem;
+  background: var(--accent);
+  color: #022c22;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.1s;
+}
+
+.task-form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(34, 197, 94, 0.35);
+}
+
+.task-form button:active {
+  transform: translateY(0);
+  box-shadow: none;
+  opacity: 0.9;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+#filter-select {
+  background: #020617;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 4px 10px;
+  font-size: 0.8rem;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 6px;
+  border-radius: 12px;
+  transition: background 0.12s ease;
+}
+
+.task-item:nth-child(even) {
+  background: rgba(15, 23, 42, 0.7);
+}
+
+.task-item:hover {
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.task-checkbox {
+  margin-top: 3px;
+}
+
+.task-content {
+  flex: 1;
+}
+
+.task-title {
+  margin: 0;
+  font-size: 0.95rem;
+  word-wrap: break-word;
+}
+
+.task-title.completed {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.task-meta {
+  margin-top: 2px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.task-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.delete-btn {
+  border: none;
+  background: transparent;
+  color: var(--danger);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+.secondary-btn {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  padding: 7px 0;
+  font-size: 0.8rem;
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.secondary-btn:hover {
+  background: rgba(15, 23, 42, 1);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Accessibility helpers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Mobile tweaks */
+@media (max-width: 480px) {
+  .app {
+    padding: 20px 10px 24px;
+  }
+
+  .task-form button {
+    padding: 0 12px;
+  }
+}
